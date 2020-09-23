@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import Modal from 'antd-mobile/lib/modal/index'
 import { Action} from 'antd-mobile/lib/modal/PropsType'
 
+const stopMove = (e: any)=> e.preventDefault()
+
 export default function alert(
     title: React.ReactNode,
     message: React.ReactNode,
@@ -17,6 +19,8 @@ export default function alert(
         ReactDOM.unmountComponentAtNode(div)
         // 将div节点移除
         div.remove()
+        // 卸载监听事件
+        document.body.removeEventListener('touchmove', stopMove)
     }
 
     const footer = actions.map((button:Action<React.CSSProperties>) => {
@@ -33,7 +37,8 @@ export default function alert(
         }
         return button
     })
-
+    // 解决 弹框后的滑动事件
+    document.body.addEventListener('touchmove',stopMove, {passive: false})
     ReactDOM.render(
         <Modal 
             visible={true} 

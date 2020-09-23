@@ -3,7 +3,8 @@
 import 'antd-mobile/dist/antd-mobile.css'
 import './index.css';
 // import App from './App';
-import alert from './Alert'
+// import alert from './Alert'
+import operation from './Operation'
 import * as serviceWorker from './serviceWorker';
 
 // ReactDOM.render(
@@ -13,7 +14,8 @@ import * as serviceWorker from './serviceWorker';
 //   document.getElementById('root')
 // );
 
-alert('title', 'hello alert')
+// alert('title', 'hello alert')
+operation([{text: '标为未读'}, {text: '置顶聊天'}])
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
